@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script&family=Pacifico&display=swap" rel="stylesheet">
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Londrina+Shadow' rel='stylesheet' type='text/css'>
+<style>
+body {
+  font-family: 'Pacifico', sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: Orange;
+}
+div {
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: 'Anton', cursive;
+  text-align: center;
+  font-size: 75px;
+  color: White;
+  margin: 60px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color: White;
+  margin: 0px 0 70px 0;
+}
+small{
+  font-family: 'Dancing Script', cursive;
+  
+  }
+p {
+  color: rgba(255,155,25,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(255,255,0,1), rgba(0,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(255,0,0,1), rgba(0,0,255,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+input {
+	font-size: 22px;
+}
+
+
+.first{
+  background-image: url("https://hungryhappenings.com/wp-content/uploads/2014/03/blackened-turkey-sliders-no-watermark.jpg");
+}
+.second{
+  background-image: url("https://i0.wp.com/montilios.com/wp-content/uploads/IMG_0323.jpg?fit=800%2C600&ssl=1");
+}
+.dessert{
+  background-image: url("https://hungryhappenings.com/wp-content/uploads/2020/03/basketball-bean-dip-and-chips-march-madness-recipe.jpg");
+}
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+    
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>Josh's Basketball Diner</h1>
+<h2>Only basketball themed Diner</h2>
+<div class="first">
+	<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Turkey Basketball Sliders <span class="price">$7</span><br />
+  <small>Orange food coloring Boars Head turtkey breast Boars head provolone cheese Caramalized onions Roasted red peppers Chipotle Gouramise. </small></p>
+</div>
+
+<div class="second">
+	<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Chocolate Spalding Basketball Cake <span class="price">$18</span><br />
+  <small>Sugar Salt Baking Soda Cocoa powder Vanilla extract Brewed Coffee (FROSTING)- Butter Powdered sugar Heavy Cream Vanilla extract Food Colloring.</small></p>
+</div>
+  
+<div class="dessert">
+	<input class="quantities" type="number" min="0" style="width: 50px">
+  <p>Basketball Chip and Dip <span class="price">$13</span><br />
+  <small>(Bean Dip)-Fried Beans Black food coloring Velveeta Cheese. (Tortilla Chips)- Flour Tortillas Orangle color mist Black food marker Vegetable oil salt.</small></p>
+</div>
+
+    <input id="Name" placeholder="Your Name">
+  <input id="Email" placeholder="Your email">
+  <input id="submit" type="submit">
+  <br><br>
+
+<script>
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+
+</body>
+
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAfr-A2eRlEWMCcnDs3oMQMILh3yZ0IQQs",
+    authDomain: "joshproject3-923a9.firebaseapp.com",
+    projectId: "joshproject3-923a9",
+    storageBucket: "joshproject3-923a9.appspot.com",
+    messagingSenderId: "56900501032",
+    appId: "1:56900501032:web:4835f8b4682f6b72fb7f1d"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+const Name = document.querySelector("#Name") 
+	const Email = document.querySelector("#Email")
+    const quantities = document.querySelectorAll(".quantities")
+  const itemsList = ["Basketball Sliders", "Basketball Cake", "Basketball Chip and Dip"] 
+	document.querySelector('#submit').addEventListener('click', Submit)
+  
+	
+	
+	function Submit() {
+		  const timestamp = buildTimestamp()
+  	  let cart = { }
+  	  for  (let i=0; i<quantities.length; i=i+1) {
+  	  	if (quantities[i].value != "0" && quantities[i].value != "") {	
+  	  		cart[itemsList[i]] = parseInt(quantities[i].value) 
+  	  	}
+  	  	quantities[i].value = ""
+  	  }
+		
+	  
+		  set(ref(db, timestamp), {
+			  Name: Name.value,
+		      email: Email.value,
+			  cart: cart,
+		  });
+
+		  Name.value = ""
+		  Email.value = ""
+		}
+		
+
+		function buildTimestamp() {
+			  const now = new Date();
+			  let timestamp = now.getFullYear().toString() + "/";
+			  //const month = now.toLocaleString('default', { month: 'long' });
+
+			  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+			  month = month.toString()
+			  month = addLeadingZero(month)
+			  timestamp += month + "/"; 
+
+			  let date = now.getDate().toString()
+			  date = addLeadingZero(date)
+			  timestamp += date + "/";
+
+			  let hours = now.getHours().toString()
+			  hours = addLeadingZero(hours)
+			  timestamp += hours + ":";
+
+			  let minutes = now.getMinutes().toString()
+			  minutes = addLeadingZero(minutes)
+			  timestamp += minutes + ":";
+
+			  let seconds = now.getSeconds().toString()
+			  seconds = addLeadingZero(seconds)
+			  timestamp += seconds;
+  
+			  return timestamp
+			}
+	
+			function addLeadingZero(units) {
+				if (units.length < 2) {
+					units = "0" + units
+				}
+				return units
+			}
+</script>
